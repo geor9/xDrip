@@ -406,7 +406,7 @@ public class BIGChart extends WatchFace implements SharedPreferences.OnSharedPre
                 }
 
                 //final java.text.DateFormat timeFormat = DateFormat.getTimeFormat(BIGChart.this);
-                final SimpleDateFormat timeFormat = new SimpleDateFormat(sharedPrefs.getBoolean("use24HourFormat", false) ? "HH:mm" : "h:mm a");
+                final SimpleDateFormat timeFormat = new SimpleDateFormat(sharedPrefs.getBoolean("use24HourFormat", false) ? "HH:mm" : "h:mm");
                 mTime.setText(timeFormat.format(System.currentTimeMillis()));
 
                 String delta = dataMap.getString("delta");
@@ -538,12 +538,12 @@ public class BIGChart extends WatchFace implements SharedPreferences.OnSharedPre
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key){
         setColor();
         if(layoutSet){
-            final SimpleDateFormat timeFormat = new SimpleDateFormat(sharedPrefs.getBoolean("use24HourFormat", false) ? "HH:mm" : "h:mm a");
+            final SimpleDateFormat timeFormat = new SimpleDateFormat(sharedPrefs.getBoolean("use24HourFormat", false) ? "HH:mm" : "h:mm");
             mTime.setText(timeFormat.format(System.currentTimeMillis()));
             clearTreatmentLists();
             showAgeAndStatus();
             mRelativeLayout.measure(specW, specH);
-            mRelativeLayout.layout(0, 0, mRelativeLayout.getMeasuredWidth(),
+            mRelativeLayout.layout(7, 0, mRelativeLayout.getMeasuredWidth(),
                     mRelativeLayout.getMeasuredHeight());
         }
         invalidate();
